@@ -11,7 +11,7 @@
 
 <body>
 	<h2>TCGPlayer Fee Calculator</h2>
-	<h6>Current as of 3/27/2018, as per https://help.tcgplayer.com/hc/en-us/articles/201357836-Fees. Currently sales tax is not implemented, which will add a few cents due to PayPal fees (but not TCG fees) considering the total after tax.</h6>
+	<h6>Current as of 3/27/2018, as per https://help.tcgplayer.com/hc/en-us/articles/201357836-Fees.</h6>
 
 	<div class='parent'>
 		<hr / class='vspacer'>
@@ -29,8 +29,9 @@
 		</div>
 
 		<div>
-			State (currently state tax not implemented)
+			State
 			<div class="form-group">
+				Current tax rate: <span id='tax'>N/A</span>
 				<div>
 					<select class="form-control" id="state" name="state">
 						<option value="">N/A</option>

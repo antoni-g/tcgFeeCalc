@@ -1,3 +1,7 @@
+body {
+	padding:20px;
+}
+
 .vspacer {
 	visibility: hidden;
 	clear:both;
@@ -13,5 +17,5 @@
 .parent {
 	padding:30px
 	height:70vh;
-	width:20vw;
+	width:25vw;
 }
