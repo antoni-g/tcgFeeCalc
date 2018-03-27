@@ -21,6 +21,8 @@ function adjustPrice() {
 	var raw = parseFloat($('#price').val()) + parseFloat($('#shipping').val());
 	if (!isNaN(raw) && (raw != 0.00)) {
 		var tcgFee =  raw*.1025;
+		if (tcgFee > 50.0)
+			tcgFee = 50.0;
 		var paypalFee = (raw*getTax())+raw*.025;
 		var totalFees = tcgFee + paypalFee + .30;
 		$('#finalFee').val(roundTo(totalFees,2));
