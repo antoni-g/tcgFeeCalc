@@ -28,3 +28,13 @@ function roundTo(n, digits) {
     var test =(Math.round(n) / multiplicator);
     return +(test.toFixed(digits));
 }
+
+function getTax() {
+	var tax = 0.0;
+	switch ($('#state').val()) {
+		case 'PA':
+			tax = .06;
+			break;
+		default: tax = 0.0;
+	}
+}
