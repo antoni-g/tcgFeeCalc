@@ -32,7 +32,7 @@
 		<div>
 			State
 			<div class="form-group">
-				Current tax rate: <span id='tax'>N/A</span>
+				Current tax rate: <span id='taxP'>N/A</span>
 				<div>
 					<select class="form-control" id="state" name="state">
 						<option value="">N/A</option>
@@ -94,7 +94,11 @@
 		</div>
 
 		<div>
-			Final Fees
+			TCG Fee
+			<input class="form-control" id='tcgFee' readonly placeholder='0.00'></span>
+			PayPal/CC Fee
+			<input class="form-control" id='taxFee' readonly placeholder='0.00'></span>
+			Final Fee
 			<input class="form-control" id='finalFee' readonly placeholder='0.00'></span>
 			<hr / class='vspacer'>
 		</div>

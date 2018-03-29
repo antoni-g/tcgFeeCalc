@@ -5,26 +5,31 @@ $( "#price" ).change(function() {
     	$("#price").val('0.00');
     }
   	adjustPrice();
+  	adjustTax();
 });
 $( "#shipping" ).change(function() {
 	if($("#shipping").val().trim().length === 0){
     	$("#shipping").val('0.00');
     }
   	adjustPrice();
+  	adjustTax();
 });
 $( "#state" ).change(function() {
   	adjustPrice();
-  	$("#tax").text(roundTo(getTax()*100, 5) + '%');
+  	$("#taxP").text(roundTo(getTax()*100, 5) + '%');
 });
 
 function adjustPrice() {
 	var raw = parseFloat($('#price').val()) + parseFloat($('#shipping').val());
 	if (!isNaN(raw) && (raw != 0.00)) {
-		var tcgFee =  raw*.1025;
+		var tcgFee =  raw*0.1025;
 		if (tcgFee > 50.0)
 			tcgFee = 50.0;
-		var paypalFee = (raw*getTax())+raw*.025;
-		var totalFees = tcgFee + paypalFee + .30;
+		adjustTCG(tcgFee);
+		var tax = (raw*getTax());
+		var paypalFee = (tax+raw)*.025;
+		adjustPP(paypalFee);
+		var totalFees = tcgFee + paypalFee + .3;
 		$('#finalFee').val(roundTo(totalFees,2));
 		$('#profit').val(roundTo(raw - totalFees, 2));
 	}
@@ -32,6 +37,15 @@ function adjustPrice() {
 		$('#finalFee').val(0.00);
 		$('#profit').val(0.00);
 	}
+}
+
+function adjustPP(fee) {
+	if (!isNaN(fee))
+	 $("#taxFee").val(roundTo(fee,2));
+}
+
+function adjustTCG(fee) {
+	 $("#tcgFee").val(roundTo(fee,2));
 }
 
 function roundTo(n, digits) {
